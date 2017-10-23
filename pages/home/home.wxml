@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="container">
+ <!--<image src="../../images/bannerImgs/Chrysanthemum.jpg" class="slide-image" width="355" height="150"/>-->
+ <view class='banner_con'>
+ <swiper>
+  <block wx:for="{{bannerData}}">
+    <swiper-item>
+        <image src="{{item.imgUrl}}" class="slide-image"/>
+      </swiper-item>
+  </block>
+ </swiper>
+ </view>
+    <view class="intro_con">
+        <view  class="title"><text>公司简介</text></view>
+        <view class="intro_detail">
+            <text>我是公司简介,我是公司简介,我是公司简介,我是公司简介,我是公司简介,我是公司简介,我是公司简介,我是公司简介,我是公司简介,我是公司简介</text>
+        </view>
+    </view>
+</view>

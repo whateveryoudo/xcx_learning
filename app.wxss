@@ -5,6 +5,46 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
+page{
+  font-size: 14px;
+}
+.f_l{
+  float: left;
+}
+
+/*cell组样式*/
+.cell_group{
+  width:100%;
+  padding:0 30rpx;
+  box-sizing: border-box;
+}
+.cell_group .cell_item{
+  display: flex;
+  width:100%;
+  align-items: center;
+  height:80rpx;
+  line-height: 80rpx;
+  border-width: 0 0 2rpx 0;
+  border-color: rgba(0,0,0,.2);
+  border-style: solid;
+  position: relative;
+}
+.cell_group .cell_item.icon .icon_left{
+  margin-right: 20rpx;
+}
+.icon_left{
+  width:40rpx;
+  height:40rpx;
+}
+.cell_group .cell_item .arrow_right{
+  width:18rpx;
+  height:18rpx;
+  border-width: 0 2rpx 2rpx 0;
+  border-color: rgb(0,0,0);
+  border-style: solid;
+  position: absolute;
+  right:10rpx;
+  transform: rotateZ(-45deg);
+}

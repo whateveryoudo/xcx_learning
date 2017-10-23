@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="user_avatar_con">
+    <image class="user_avatar" bindtap="changeHead" src="{{userInfo.avatarUrl || '../../images/icons/default_head.png'}}"/>
+    <text class="username">{{userInfo.nickName}}</text>
+  </view>
+
+    <view class="cell_group userInfoType_con">
+      <view class="cell_item icon">
+        <image class="icon_left" src="../../images/icons/search.png"/>
+        <text>历史查询</text>
+        <view class="arrow_right"></view>
+      </view>
+      <view class="cell_item icon">
+        <image class="icon_left" src="../../images/icons/search.png"/>
+        <text>历史查询</text>
+        <view class="arrow_right"></view>
+      </view>
+      <view class="cell_item icon">
+        <image class="icon_left" src="../../images/icons/search.png"/>
+        <text>历史查询</text>
+        <view class="arrow_right"></view>
+      </view>
+    </view>
+</view>
