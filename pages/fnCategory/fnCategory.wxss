@@ -1,8 +1,10 @@
 @import "/plugin/css/animate.wxss";
 
 .top_tip{
-  margin-top: 50rpx;
-
+  margin-top: 70rpx;
+}
+.top_tip>text{
+  font-size: 18px;
 }
 .phone_choose_item{
   display: flex;

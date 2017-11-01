@@ -1,3 +1,7 @@
+/*引入组件库样式文件*/
+@import "./components/wux.wxss";
+/*引入weui样式文件*/
+@import "./plugin/css/weui.wxss";
 /**app.wxss**/
 .container {
   height: 100%;
@@ -48,3 +52,56 @@ page{
   right:10rpx;
   transform: rotateZ(-45deg);
 }
+/*form表单组样式*/
+.wx_filed_container{
+  display: block;
+  margin:20rpx auto;
+  border-top:1px solid #d9d9d9;
+  /*border-bottom:1px solid #d9d9d9;*/
+}
+.wx_filed_container .wx_filed_item{
+  border-bottom: 1px solid #d9d9d9;
+  display: flex;
+  height:86rpx;
+  align-items:center;
+  margin-left: 4%;
+  padding-right: 4%;
+}
+.wx_filed_container .wx_filed_item:last-child{
+  border-bottom:none;
+}
+.wx_filed_container .wx_filed_item .filed_label{
+  flex:2;
+}
+.wx_filed_container .wx_filed_item .filed_value{
+  flex:5;
+}
+/*组件样式重写*/
+button{
+  width:92%;
+  margin: 0 auto;
+  color:#fff;
+  font-size: 16px;
+}
+button[size='mini']{
+  font-size: 14px;
+  width:37%;
+  height:64rpx;
+  padding:0;
+}
+button.button-hover{
+  opacity: .85;
+  color:#fff;
+}
+button[type='info']{
+  background-color: rgb(38,162,255);
+}
+
+/*过度样式*/
+.fadeOut{
+  opacity: 0;
+}
+.fadeIn{
+  opacity: 1;
+}
+

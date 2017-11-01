@@ -4,19 +4,19 @@
     <text>请选择你要查询的类型</text>
   </view>
   <view class="phone_types_con">
-    <view class="phone_choose_item">
+    <view class="phone_choose_item" data-type="yd" bindtap="toFnDetail">
       <view class="phone_icon">
         <image src="../../images/icons/china_yd.png" alt="中国移动" />
       </view>
       <text>中国移动</text>
     </view>
-    <view class="phone_choose_item">
+    <view class="phone_choose_item" data-type="dx" bindtap="toFnDetail">
       <view class="phone_icon">
         <image src="../../images/icons/china_dx.png" alt="中国电信" />
       </view>
       <text>中国电信</text>
     </view>
-    <view class="phone_choose_item">
+    <view class="phone_choose_item" data-type="lt" bindtap="toFnDetail">
       <view class="phone_icon">
         <image src="../../images/icons/china_lt.png" alt="中国联通" />
       </view>

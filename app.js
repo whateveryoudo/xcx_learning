@@ -1,4 +1,6 @@
 //app.js
+import wxValidate from 'plugin/js/wxValidate'
+import {$wuxToast,$wuxLoading} from './components/wux'//添加插件
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -32,6 +34,12 @@ App({
         }
       }
     })
+  },
+    //添加插件集(需要引用的地方引入app对象即可)
+    $wuxToast,$wuxLoading,
+    wxValidate: (rules, messages) => {//添加验证插件
+
+      return new wxValidate(rules, messages)
   },
   globalData: {
     userInfo: null

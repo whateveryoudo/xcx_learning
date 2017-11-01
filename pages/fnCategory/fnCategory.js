@@ -9,12 +9,18 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+    toFnDetail(e){
+        let type = e.currentTarget.dataset.type;
+        type && function(){
+            switch (type){
+                case 'yd':
+                    wx.navigateTo({//跳转移动业务查询
+                        url: 'ydLogin/ydLogin'
+                    })
+                    break;
+            }
+        }()
+    },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
