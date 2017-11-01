@@ -1,0 +1,4 @@
+/*组件样式集合*/
+/*引入动画样式库*/
+@import "../plugin/css/animate.wxss";
+@import "styles/Toast.wxss";

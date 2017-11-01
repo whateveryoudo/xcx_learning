@@ -1,0 +1,15 @@
+.yd_form_con{
+  width: 100%;
+}
+.filed_value{
+  display: flex;
+}
+button.subBtn{
+  margin-top: 50rpx;
+}
+/*.aaa{*/
+  /*transition: all .3s;*/
+/*}*/
+/*.aaa.fadeOut{*/
+  /*opacity: 0;*/
+/*}*/

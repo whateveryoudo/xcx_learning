@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/user/user",
+    "pages/fnCategory/ydLogin/ydLogin",
     "pages/fnCategory/fnCategory",
+    "pages/user/user",
     "pages/home/home"
   ],
   "window":{
