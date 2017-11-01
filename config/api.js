@@ -4,9 +4,12 @@
 
 import {$wuxToast,$wuxLoading} from '../components/wux'
 import {apiPrefix} from './env'
-//简易封装wx网络请求
+/* fnName
+ * @param
+ * @desc 简易封装wx网络请求(这里默认post请求)
+ */
 export default (url,paramsList = {},cb,failCb) => {
-    let type = paramsList.type || 'GET',
+    let type = paramsList.type || 'POST',
         data = paramsList.data || {},
         isLoading = typeof paramsList.isLoading == 'boolean' ? paramsList.isLoading : true;
         type == 'GET' && function(){//get 拼接参数(微信自己会拼接参数)
@@ -41,19 +44,18 @@ export default (url,paramsList = {},cb,failCb) => {
             "Content-Type": "application/json"
         },
         success: function(res) {//某些接口无状态码 这里不做请求错误的判断
-            // if(res.statusCode == 200){
-            //     typeof cb === 'function' && cb(res.data);
-            // }else{//提示错误
-            //     $wuxToast.show({
-            //         type: 'cancel',
-            //         timer: 1500,
-            //         color: '#fff',
-            //         text: '服务器异常...'
-            //         // success: () => console.log('取消操作')
-            //     })
-            // }
             $wuxLoading.hide();
-            typeof cb === 'function' && cb(res.data || res);
+            res = res.data;
+            if(res.code == 200){
+                typeof cb === 'function' && cb(res);
+            }else{//提示错误
+                $wuxToast.show({
+                    type: 'cancel',
+                    timer: 1500,
+                    color: '#fff',
+                    text: '服务器异常...'
+                })
+            }
         },
         fail : function(){
             $wuxLoading.hide();

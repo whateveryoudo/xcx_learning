@@ -1,5 +1,5 @@
 var appInstance = getApp();
-// import {sendYdMsg} from '../../service/getData'
+import {getYdReqId,sendYdMsg} from '../../service/getData'
 Page({
   data: {
       userInfo : {
@@ -11,6 +11,7 @@ Page({
       sendBtnText : '发送验证码',
       sendBtnIsAbleClick : true,
       timer : null,
+      reqId : '',//用户随机穿
       count : 59,
       isAdd : false,
       verifyRule : {
@@ -43,26 +44,31 @@ Page({
     onLoad(){
         //获取随机reqId
         getYdReqId({
-            noMask : true,
-            data : {
-
-            }
+            isLoading : false,
+            data : {}
         },res => {
-            //初始化表单验证
-            this.wxValidate = appInstance.wxValidate(this.data.verifyRule,this.data.verifyMsg);
+            res.data.reqId && this.setData({reqId:res.data.reqId});
         })
-
+        //初始化表单验证
+        debugger;
+        this.wxValidate = appInstance.wxValidate(this.data.verifyRule,this.data.verifyMsg);
     },
     //发送验证码
     sendMsg(){
         if(!this.data.sendBtnIsAbleClick){return}
+        // if(this.wxValidate.checkParam('username',{
+        //         required: true,
+        //         tel: true,
+        //     })){
+        //
+        // }
         //这里去发送验证码
-        let reqParams = Object.assign();//初始化请求参数
+        let reqParams = Object.assign(this.data.userInfo,{reqId : this.data.reqId});//初始化请求参数
         sendYdMsg({
             type : 'POST',
-            // data : {
-            //     username :
-            // }
+            data : {
+                reqParams
+            }
         },sendSuc);
         function sendSuc(res){
             this.data.timer = setInterval(() => {
