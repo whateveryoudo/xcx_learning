@@ -2,7 +2,7 @@
 <view class="container">
  <!--<image src="../../images/bannerImgs/Chrysanthemum.jpg" class="slide-image" width="355" height="150"/>-->
  <view class='banner_con'>
- <swiper>
+ <swiper circular="true" indicator-dots="true">
   <block wx:for="{{bannerData}}">
     <swiper-item>
         <image src="{{item.imgUrl}}" class="slide-image"/>
