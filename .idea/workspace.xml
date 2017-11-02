@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27727d28-4024-4a79-a943-c6927535abe3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/Loading/Loading.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/Loading/Loading.wxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/Toast/Toast.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/Toast/Toast.wxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/components.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/styles/Toast.wxss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/wux.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/wux.wxss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/api.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/env.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/fnCategory/ydLogin/ydLogin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/fnCategory/ydLogin/ydLogin.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/fnCategory/ydLogin/ydLogin.wxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/fnCategory/ydLogin/ydLogin.wxss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/service/getData.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugin/css/weui.wxss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugin/js/wxValidate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/getData.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.json" afterPath="$PROJECT_DIR$/app.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.wxss" afterPath="$PROJECT_DIR$/app.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/fnCategory/fnCategory.js" afterPath="$PROJECT_DIR$/pages/fnCategory/fnCategory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/fnCategory/fnCategory.wxml" afterPath="$PROJECT_DIR$/pages/fnCategory/fnCategory.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/fnCategory/fnCategory.wxss" afterPath="$PROJECT_DIR$/pages/fnCategory/fnCategory.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/logs/logs.js" afterPath="$PROJECT_DIR$/pages/logs/logs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin/css/animate.wxss" afterPath="$PROJECT_DIR$/plugin/css/animate.wxss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/utils/util.js" afterPath="$PROJECT_DIR$/tools/util.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/service/getData.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
-              <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+              <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -68,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/tools/util.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
-              <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+              <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -78,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/components/styles/Toast.wxss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+              <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -110,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/components/wux.wxss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
-              <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+              <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -130,9 +103,10 @@
         <entry file="file://$PROJECT_DIR$/config/api.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
-              <caret line="32" column="27" lean-forward="true" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+              <caret line="32" column="27" lean-forward="false" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
               <folding>
                 <element signature="e#52#107#0" expanded="true" />
+                <marker date="1509540757733" expanded="true" signature="203:2270" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -485,16 +459,16 @@
       <workItem from="1508742397033" duration="582000" />
       <workItem from="1508743513401" duration="9568000" />
       <workItem from="1508898852480" duration="19877000" />
-      <workItem from="1509540146125" duration="6057000" />
+      <workItem from="1509540146125" duration="6128000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36084000" />
+    <option name="totallyTimeSpent" value="36155000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1918" height="1038" extended-state="0" />
-    <editor active="true" />
+    <frame x="1" y="1" width="1918" height="1038" extended-state="1" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2578041" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -832,9 +806,10 @@
     <entry file="file://$PROJECT_DIR$/config/api.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
-          <caret line="32" column="27" lean-forward="true" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+          <caret line="32" column="27" lean-forward="false" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
           <folding>
             <element signature="e#52#107#0" expanded="true" />
+            <marker date="1509540757733" expanded="true" signature="203:2270" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -858,7 +833,7 @@
     <entry file="file://$PROJECT_DIR$/components/wux.wxss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
-          <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -866,7 +841,7 @@
     <entry file="file://$PROJECT_DIR$/tools/util.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
-          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -874,7 +849,7 @@
     <entry file="file://$PROJECT_DIR$/service/getData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -900,7 +875,7 @@
     <entry file="file://$PROJECT_DIR$/components/styles/Toast.wxss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
           <folding />
         </state>
       </provider>
