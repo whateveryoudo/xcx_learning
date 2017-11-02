@@ -33,7 +33,12 @@ export default (url,paramsList = {},cb,failCb) => {
         }();
     if(isLoading){
         //调用自定义loading组件
-        $wuxLoading.show();
+        $wuxLoading.show({
+            type : 'loading',
+            timer: 1500,
+            color: '#fff',
+            text: paramsList.loadingText || '加载中...'
+        });
     }
     //微信请求
     wx.request({

@@ -308,13 +308,19 @@ class wxValidate {
 	 * @param {Object} event 表单数据对象
 	 */
 	checkParam(param, rules, event) {
+        let value = '';
+        if(event instanceof Object){
+			debugger;
+			// 缓存表单数据对象
+            this.scope = event;
 
-		// 缓存表单数据对象
-		this.scope = event
-
-		// 缓存字段对应的值
-		const data = event.detail.value
-		const value = data[param] || ''
+            // 缓存字段对应的值
+            const data = event.detail.value
+            value = data[param] || ''
+		}else{
+			debugger;
+            value = event || '';//传入单个值验证
+		}
 
 		// 遍历某个指定字段的所有规则，依次验证规则，否则缓存错误信息
 		for(let method in rules) {

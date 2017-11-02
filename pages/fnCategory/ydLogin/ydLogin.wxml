@@ -19,14 +19,14 @@
       <view class="wx_filed_item">
         <view class="filed_label">电话号码</view>
         <view class="filed_value">
-          <input name="username" value="{{userInfo.username}}" placeholder="请输入电话号码"/>
+          <input name="username" value="{{userInfo.username}}"  data-type="username" bindinput="bindKeyInput" placeholder="请输入电话号码"/>
         </view>
       </view>
       <view class="wx_filed_item">
         <view class="filed_label">短信验证码</view>
         <view class="filed_value">
           <input name="message"  value="{{userInfo.message}}" placeholder="请输入"/>
-          <button type='info' size="mini" catchtap="sendMsg">发送验证码</button>
+          <button type='info' class="{{!sendBtnIsAbleClick && 'gray'}}" size="mini" catchtap="sendMsg">{{sendBtnText}}</button>
         </view>
       </view>
       <view class="wx_filed_item">

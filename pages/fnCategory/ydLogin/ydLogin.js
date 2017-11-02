@@ -1,5 +1,6 @@
 var appInstance = getApp();
 import {getYdReqId,sendYdMsg} from '../../service/getData'
+import {verifyRules} from '../../../plugin/js/verifyRules'
 Page({
   data: {
       userInfo : {
@@ -39,7 +40,7 @@ Page({
     },
     //无双向绑定处理
     bindKeyInput(e){
-        e.detail.value && (this.data[e.target.dataset.type] = e.detail.value);//不用setData
+        e.detail.value && (this.data.userInfo[e.target.dataset.type] = e.detail.value);//不用setData
     },
     onLoad(){
         //获取随机reqId
@@ -50,39 +51,41 @@ Page({
             res.data.reqId && this.setData({reqId:res.data.reqId});
         })
         //初始化表单验证
-        debugger;
         this.wxValidate = appInstance.wxValidate(this.data.verifyRule,this.data.verifyMsg);
     },
-    //发送验证码
+    //发送验证码(这里无法获取整个表单字段对象,自己手动验证)
     sendMsg(){
-        if(!this.data.sendBtnIsAbleClick){return}
-        // if(this.wxValidate.checkParam('username',{
-        //         required: true,
-        //         tel: true,
-        //     })){
-        //
-        // }
-        //这里去发送验证码
-        let reqParams = Object.assign(this.data.userInfo,{reqId : this.data.reqId});//初始化请求参数
-        sendYdMsg({
-            type : 'POST',
-            data : {
-                reqParams
+        const  that = this;
+        sendSuc();//这里直接调用
+        return;
+        if(!that.data.sendBtnIsAbleClick){return}
+            //验证手机号是否符合
+            if(verifyRules.phone(that.data.userInfo.username)){
+                //这里去发送验证码
+                sendYdMsg({
+                    type : 'POST',
+                    loadingText : '短信发送中...',
+                    data : {
+                        phone : that.data.userInfo.username,
+                        reqId : that.data.reqId
+                    }
+                },sendSuc);
             }
-        },sendSuc);
         function sendSuc(res){
-            this.data.timer = setInterval(() => {
-                this.data.count--;
-                if(this.data.count <= 0){
-                    this.setData({
+                debugger;
+            that.data.timer = setInterval(() => {
+                that.data.count--;
+                if(that.data.count <= 0){
+                    that.setData({
                         sendBtnIsAbleClick : true,
                         sendBtnText : '重新发送',
                         count : 59
                     })
-                    clearInterval(this.data.timer);
+                    clearInterval(that.data.timer);
                 }else{
-                    this.setData({
-                        sendBtnText : '(' + this.data.count + ')后秒后重新发送',
+                    that.setData({
+                        sendBtnIsAbleClick : false,
+                        sendBtnText : '重新发送' + '(' + that.data.count + 's)',
                     })
                 }
             },1000)
