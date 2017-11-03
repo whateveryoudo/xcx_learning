@@ -1,0 +1,38 @@
+
+<!--引入toast组件-->
+<import  src="../../../../components/Toast/Toast.wxml"/>
+<template is="toast" data="{{...$wux.toast}}"></template>
+<!--引入loading组件-->
+<import  src="../../../../components/Loading/Loading.wxml"/>
+<template is="loading" data="{{...$wux.loading}}"></template>
+
+
+<view class="container">
+  <view class="yd_form_con">
+    <form class="wx_filed_container" bindsubmit="formSubmit"   bindreset="formReset">
+      <view class="wx_filed_item">
+        <view class="filed_label">服务密码</view>
+        <view class="filed_value">
+          <input name="servpwd" type="password" maxlength="6" value="{{userInfo.servpwd}}" data-type="servpwd"  bindinput="bindKeyInput" placeholder="请输入服务密码"/>
+        </view>
+      </view>
+      <view class="wx_filed_item">
+        <view class="filed_label">图形验证码</view>
+        <view class="filed_value">
+          <input name="captcha" value="{{userInfo.captcha}}" maxlength="6"  data-type="captcha" bindinput="bindKeyInput" placeholder="请输入"/>
+          <image class="f_v_captcha" bindtap="initCaptcha" wx:if="{{captchaUrl}}" src="{{'data:image/png;base64,' + captchaUrl}}"></image>
+        </view>
+      </view>
+      <view class="wx_filed_item">
+        <view class="filed_label">短信验证码</view>
+        <view class="filed_value">
+          <!--这里文字input宽度不变短-->
+          <input name="sms" style="max-width: 220rpx;" maxlength="6"  value="{{userInfo.sms}}" placeholder="请输入"/>
+          <button type='info' class="{{!sendBtnIsAbleClick && 'gray'}}" size="mini" catchtap="sendMsg">{{sendBtnText}}</button>
+        </view>
+      </view>
+      <button type="info" form-type="submit" class="subBtn"  loading="{{loading}}"
+              bindtap="submitForm" hover-class="button-hover"> 查询 </button>
+    </form>
+  </view>
+</view>
