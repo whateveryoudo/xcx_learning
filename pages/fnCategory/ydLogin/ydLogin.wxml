@@ -5,27 +5,32 @@
 <!--引入loading组件-->
 <import  src="../../../components/Loading/Loading.wxml"/>
 <template is="loading" data="{{...$wux.loading}}"></template>
-
+<!--引入progrss组件-->
+<import  src="../../../components/progress/progress.wxml"/>
+<template is="progress" data="{{..._proData}}"></template>
 
 <view class="container">
+  <!--不支持自定义组件 模拟器-->
+  <!--<top-progress></top-progress>-->
   <view class="yd_form_con">
     <form class="wx_filed_container" bindsubmit="formSubmit"   bindreset="formReset">
       <view class="wx_filed_item">
         <view class="filed_label">姓名</view>
         <view class="filed_value">
-          <input name="name" value="{{userInfo.name}}" data-type="name" bindinput="bindKeyInput" placeholder="请输入姓名"/>
+          <input name="name" value="{{userInfo.name}}" data-type="name" maxlength="10" bindinput="bindKeyInput" placeholder="请输入姓名"/>
         </view>
       </view>
       <view class="wx_filed_item">
         <view class="filed_label">电话号码</view>
         <view class="filed_value">
-          <input name="username" value="{{userInfo.username}}"  data-type="username" bindinput="bindKeyInput" placeholder="请输入电话号码"/>
+          <input name="username" value="{{userInfo.username}}" maxlength="11"  data-type="username" bindinput="bindKeyInput" placeholder="请输入电话号码"/>
         </view>
       </view>
       <view class="wx_filed_item">
         <view class="filed_label">短信验证码</view>
         <view class="filed_value">
-          <input name="message"  value="{{userInfo.message}}" placeholder="请输入"/>
+          <!--这里文字input宽度不变短-->
+          <input name="message" style="max-width:200rpx;" maxlength="6"  value="{{userInfo.message}}" placeholder="请输入"/>
           <button type='info' class="{{!sendBtnIsAbleClick && 'gray'}}" size="mini" catchtap="sendMsg">{{sendBtnText}}</button>
         </view>
       </view>
@@ -36,7 +41,7 @@
         </view>
       </view>
       <button type="info" form-type="submit" class="subBtn"  loading="{{loading}}"
-              bindtap="submitForm" hover-class="button-hover"> 下一步 </button>
+              bindtap="submitForm" hover-class="button-hover"> {{btnText}} </button>
     </form>
   </view>
 </view>

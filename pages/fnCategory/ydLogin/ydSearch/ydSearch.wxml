@@ -1,9 +1,9 @@
 
 <!--引入toast组件-->
-<import  src="../../../components/Toast/Toast.wxml"/>
+<import  src="../../../../components/Toast/Toast.wxml"/>
 <template is="toast" data="{{...$wux.toast}}"></template>
 <!--引入loading组件-->
-<import  src="../../../components/Loading/Loading.wxml"/>
+<import  src="../../../../components/Loading/Loading.wxml"/>
 <template is="loading" data="{{...$wux.loading}}"></template>
 
 
@@ -11,33 +11,33 @@
   <view class="yd_form_con">
     <form class="wx_filed_container" bindsubmit="formSubmit"   bindreset="formReset">
       <view class="wx_filed_item">
-        <view class="filed_label">姓名</view>
+        <view class="filed_label">服务密码</view>
         <view class="filed_value">
-          <input name="name" value="{{userInfo.name}}" data-type="name" maxlength="10" bindinput="bindKeyInput" placeholder="请输入姓名"/>
+          <input name="servpwd" type="password" maxlength="6" value="{{userInfo.servpwd}}" data-type="servpwd"  bindinput="bindKeyInput" placeholder="请输入服务密码"/>
         </view>
       </view>
       <view class="wx_filed_item">
-        <view class="filed_label">电话号码</view>
+        <view class="filed_label">图形验证码</view>
         <view class="filed_value">
-          <input name="username" value="{{userInfo.username}}" maxlength="11"  data-type="username" bindinput="bindKeyInput" placeholder="请输入电话号码"/>
+          <input name="captcha" value="{{userInfo.captcha}}" maxlength="6"  data-type="captcha" bindinput="bindKeyInput" placeholder="请输入"/>
+          <image class="f_v_captcha" bindtap="initCaptcha" wx:if="{{captchaUrl}}" src="{{'data:image/png;base64,' + captchaUrl}}"></image>
         </view>
       </view>
       <view class="wx_filed_item">
         <view class="filed_label">短信验证码</view>
         <view class="filed_value">
           <!--这里文字input宽度不变短-->
-          <input name="message" style="max-width: 260rpx;" maxlength="6"  value="{{userInfo.message}}" placeholder="请输入"/>
+          <input name="sms" style="max-width: 220rpx;" maxlength="6"  value="{{userInfo.sms}}" placeholder="请输入"/>
           <button type='info' class="{{!sendBtnIsAbleClick && 'gray'}}" size="mini" catchtap="sendMsg">{{sendBtnText}}</button>
         </view>
       </view>
-      <view class="wx_filed_item">
-        <view class="filed_label">邮箱</view>
-        <view class="filed_value">
-          <input name="mail" value="{{userInfo.mail}}" placeholder="请输入邮箱"/>
-        </view>
+      <view class="tips">
+        <view class="t-title">温馨提示:</view>
+        <text>1.若不记得服务密码，请发送CZMM 身份证号（注意身份证号前的空格）到10086。</text>
+        <text>2.第二次获取短信验证码需要等待60s。</text>
       </view>
       <button type="info" form-type="submit" class="subBtn"  loading="{{loading}}"
-              bindtap="submitForm" hover-class="button-hover"> 登录 </button>
+              bindtap="submitForm" hover-class="button-hover">{{btnText}}</button>
     </form>
   </view>
 </view>

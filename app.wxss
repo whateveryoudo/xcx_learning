@@ -66,32 +66,43 @@ page{
   align-items:center;
   margin-left: 4%;
   padding-right: 4%;
+  justify-content: flex-start;
 }
 .wx_filed_container .wx_filed_item:last-child{
   border-bottom:none;
 }
 .wx_filed_container .wx_filed_item .filed_label{
-  flex:2;
+  width:200rpx;
 }
 .wx_filed_container .wx_filed_item .filed_value{
-  flex:5;
+  flex:1;
+  justify-content: space-between;
+  align-items: center;
 }
 /*组件样式重写*/
+input{
+  width:100%;
+}
 button{
-  width:92%;
-  margin: 0 auto;
+
+  margin: 0;
   color:#fff;
   font-size: 16px;
 }
 button[size='mini']{
   font-size: 14px;
-  width:37%;
   height:64rpx;
-  padding:0;
+  width:auto;
+  max-width: 52%;
+  padding:0 20rpx;
 }
 button.button-hover{
   opacity: .85;
   color:#fff;
+}
+button.subBtn{
+  margin: 0 auto;
+  width: 92%;
 }
 button[type='info']{
   background-color: rgb(38,162,255);

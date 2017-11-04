@@ -2,3 +2,4 @@
 /*引入动画样式库*/
 @import "../plugin/css/animate.wxss";
 @import "styles/Toast.wxss";
+@import "styles/progress.wxss";

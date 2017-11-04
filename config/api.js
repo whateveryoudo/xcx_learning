@@ -58,7 +58,8 @@ export default (url,paramsList = {},cb,failCb) => {
                     type: 'cancel',
                     timer: 1500,
                     color: '#fff',
-                    text: '服务器异常...'
+                    text: res.msg || '服务器异常...',
+                    success: () => {typeof failCb == 'function' && failCb()}
                 })
             }
         },

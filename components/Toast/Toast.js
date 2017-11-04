@@ -68,6 +68,7 @@ export default {
                 hide(cb){
                     setTimeout(() => {
                         this.setHidden();
+                        typeof cb === 'function' && cb();
                     },options.timer)
                 }
             }

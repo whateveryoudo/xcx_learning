@@ -1,0 +1,14 @@
+<!--自定义progress组件-->
+<template name="progress">
+    <view class="progress-container">
+        <block  wx:for="{{proSteps}}" wx:for-item="stepItem" wx:key="proSteps">
+            <view class="step-item">
+                <view class="line"></view>
+                <span class="step-name">{{stepItem.title}}</span>
+            </view>
+        </block>
+        <view class="last-step-con">
+
+        </view>
+    </view>
+</template>

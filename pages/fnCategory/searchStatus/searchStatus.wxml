@@ -1,0 +1,6 @@
+<view class="status-container">
+ <image class="smile-con" src="../../../images/icons/smile.png"></image>
+  <text>通话详单即将发送到你的邮箱，请注意查收。</text>
+  <text>感谢你的使用！</text>
+  <button class="backToHome" bindtap="toHome" size="mini" type="info">返回首页</button>
+</view>

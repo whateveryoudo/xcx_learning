@@ -310,7 +310,6 @@ class wxValidate {
 	checkParam(param, rules, event) {
         let value = '';
         if(event instanceof Object){
-			debugger;
 			// 缓存表单数据对象
             this.scope = event;
 
@@ -318,7 +317,6 @@ class wxValidate {
             const data = event.detail.value
             value = data[param] || ''
 		}else{
-			debugger;
             value = event || '';//传入单个值验证
 		}
 

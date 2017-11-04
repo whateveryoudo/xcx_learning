@@ -1,9 +1,11 @@
 {
   "pages":[
     "pages/fnCategory/ydLogin/ydLogin",
+    "pages/home/home",
+    "pages/fnCategory/ydLogin/ydSearch/ydSearch",
+    "pages/fnCategory/searchStatus/searchStatus",
     "pages/fnCategory/fnCategory",
-    "pages/user/user",
-    "pages/home/home"
+    "pages/user/user"
   ],
   "window":{
     "backgroundTextStyle":"light",

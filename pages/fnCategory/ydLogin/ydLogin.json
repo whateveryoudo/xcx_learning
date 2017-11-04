@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "四川移动登录"
+    "navigationBarTitleText": "四川移动登录",
+    "usingComponents": {
+        "top-progress": "/components/progress/progress"
+    }
 }

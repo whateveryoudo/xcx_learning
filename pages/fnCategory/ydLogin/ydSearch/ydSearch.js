@@ -1,56 +1,47 @@
 var appInstance = getApp();
-import {getYdReqId,sendYdMsg,toYdLogin} from '../../../service/getData'
-import {verifyRules} from '../../../plugin/js/verifyRules'
-import {$wuxToast} from '../../../components/wux'
+import {getYdCaptcha,sendYdSearchMsg,toYdSearch} from '../../../../service/getData'
+import {$wuxToast} from '../../../../components/wux'
 Page({
   data: {
       userInfo : {
-          name : '',
-          username: '',
-          mail : "",
-          message : '',
+          servpwd : '',
+          captcha: '',
+          sms : ""
       },
       sendBtnText : '发送验证码',
       sendBtnIsAbleClick : true,
-      timer : null,
+      timer2 : null,
+      timer1 : null,
       reqId : '',//用户随机窜
-      count : 59,
-      isAdd : false,
+      phone : '',//用户电话号码
+      count : 60,
+      captchaUrl : '',//图形验证码
+      currentTimeStamp : '',//当前时间戳
       //验证规则
       verifyRule : {
-          name: {
-              required: true,
-              minlength: 2,
-              maxlength: 10,
-          },
-          username : {
-              required: true,
-              tel: true,
-          },
-          message : {
+          servpwd: {
               required: true
           },
-          mail : {
-              required: true,
-              email : true
+          captcha : {
+              required: true
+          },
+          sms : {
+              required: true
           }
       },
       //验证规则对应的提示信息
       verifyMsg : {
-          name: {
-              required: '请填写您的姓名'
+          servpwd: {
+              required: '请填写服务密码'
           },
-          username : {
-              required: '请填写您的手机号'
+          captcha : {
+              required: '请填写图形验证码'
           },
-          message : {
-              required: '请填写验证码'
-          },
-          mail : {
-              required: '请填写你的邮箱'
+          sms : {
+              required: '请填写短信验证码'
           }
       },
-      btnText : '发送验证码',
+      btnText : '查询',
       loading : false,
       disabled : true
     },
@@ -58,35 +49,89 @@ Page({
     bindKeyInput(e){
         e.detail.value && (this.data.userInfo[e.target.dataset.type] = e.detail.value);//不用setData
     },
-    onLoad(){
-        //获取随机reqId
-        getYdReqId({
-            isLoading : false,
-            data : {}
-        },res => {
-            res.data.reqId && this.setData({reqId:res.data.reqId});
+    onLoad(option){
+
+        //参数中获取登录成功的reqId与phone
+        let _reqId = option.reqId,_phone = option.phone;
+        // let _phone = '15982819091',_reqId = 'mobile_18d8eba6c07d11e7ab3000163e08e75e';//这里测试数据
+        if(!_reqId || !_phone){
+            $wuxToast.show({
+                type : 'cancel',
+                timer: 1500,
+                color: '#fff',
+                text: '缺少必要参数...'
+            });
+            return;
+        }
+        this.setData({
+            reqId : _reqId,
+            phone : _phone
         })
         //初始化表单验证
         this.wxValidate = appInstance.wxValidate(this.data.verifyRule,this.data.verifyMsg);
+        // wx.setStorage({
+        //   key:"loginMsgTimeStamp",
+        //   data:'1509702341253'
+        // });
+        //判断当前时间距离上次发送的短信的时间差是否大于60s
+        wx.getStorage({
+          key: 'loginMsgTimeStamp',
+          success: res => {
+            if(res.data){//本地存储存在
+                var oldTimeStamp = parseInt(res.data);
+                this.setData({
+                    currentTimeStamp : new Date().getTime()
+                });//设置当前时间戳（为什么不能写到data）
+                if((this.data.currentTimeStamp - oldTimeStamp) < 60 * 1000){//两次时间差不超过60s
+                    //开启时间戳
+                    this.data.timer1 = setInterval(() => {
+                        this.setData({
+                            currentTimeStamp : this.data.currentTimeStamp + 1000
+                        })
+                        let tempTime = parseInt((this.data.currentTimeStamp - oldTimeStamp) / 1000);
+                        if(tempTime > 59){//能够发送了
+                            clearInterval(this.data.timer1);
+                            this.setData({
+                                sendBtnIsAbleClick : true,
+                                sendBtnText : '发送验证码'
+                            })
+                        }else{
+                            this.setData({
+                                sendBtnIsAbleClick : false,
+                                sendBtnText : '发送验证码(' + (60 - tempTime) + ')s'
+                            })
+                        }
+                    },1000)
+                }else{//能够发送
+                    this.sendMsg();
+                }
+            }else{
+                this.sendMsg();
+            }
+          } 
+        });
+
+
+        //初始化图形验证码
+        this.initCaptcha();
     },
     //发送验证码(这里无法获取整个表单字段对象,自己手动验证)
     sendMsg(){
         const  that = this;
         if(!that.data.sendBtnIsAbleClick){return}
             //验证手机号是否符合
-            if(verifyRules.phone(that.data.userInfo.username)){
+            if(that.data.phone){
                 //这里去发送验证码
-                sendYdMsg({
-                    type : 'POST',
+                sendYdSearchMsg({
                     loadingText : '短信发送中...',
                     data : {
-                        phone : that.data.userInfo.username,
+                        phone : that.data.phone,
                         reqId : that.data.reqId
                     }
                 },sendSuc);
             }
         function sendSuc(res){
-            that.data.timer = setInterval(() => {
+            that.data.timer2 = setInterval(() => {
                 that.data.count--;
                 if(that.data.count <= 0){
                     that.setData({
@@ -94,7 +139,7 @@ Page({
                         sendBtnText : '重新发送',
                         count : 59
                     })
-                    clearInterval(that.data.timer);
+                    clearInterval(that.data.timer2);
                 }else{
                     that.setData({
                         sendBtnIsAbleClick : false,
@@ -102,6 +147,25 @@ Page({
                     })
                 }
             },1000)
+        }
+    },
+    /*
+     * @name  getCaptcha
+     * @param
+     * @description 获取图形验证码
+     */
+    initCaptcha(){
+        const that = this;
+        getYdCaptcha({
+            data : {
+                reqId : that.data.reqId
+            },
+            isLoading : false
+        },getSuc);
+        function getSuc(res){//设置图形验证码
+            res.data.captcha && that.setData({
+                captchaUrl : res.data.captcha
+            })
         }
     },
     formSubmit(e){
@@ -116,30 +180,35 @@ Page({
           })
           return false;
       };
-      let reqParam = Object.assign(e.detail.value,{reqId : that.data.reqId});
+      let reqParam = Object.assign(e.detail.value,{reqId : that.data.reqId,username : that.data.phone});
+        that.setData({
+            loading : true,
+            btnText : '查询中...'
+        })
         //移动登录
-        toYdLogin({
+        toYdSearch({
             type : 'POST',
-            loadingText : '登录中...',
-            data : reqParam
-        },loginSuc);
+            loadingText : '查询中...',
+            data : reqParam,
+            isLoading:false
+        },searchSuc,searchFail);
         //登录成功
-        function loginSuc(res) {
+        function searchSuc(res) {
             //调用自定义loading组件
-            $wuxToast.show({
-                type : 'success',
-                timer: 1500,
-                color: '#fff',
-                text: '登录成功',
-                success(){
-                    setTimeout(() =>{
-                        //跳转查询界面
-                        wx.navigateTo({//跳转移动业务查询(将手机号与reqId传入页面)
-                            url: 'ydLogin/ydLogin'
-                        })
-                    })
-                }
-            });
+            that.setData({
+                loading : false,
+                btnText : '查询'
+            })
+            wx.navigateTo({
+                url: '../../searchStatus/searchStatus?searchType=yd'
+            })
+        }
+        //查询失败
+        function searchFail(){
+            that.setData({
+                loading : false,
+                btnText : '查询'
+            })
         }
     }
 })
